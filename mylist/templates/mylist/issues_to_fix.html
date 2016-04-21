@@ -1,0 +1,54 @@
+{% extends "base.html"  %}
+<!-- original version had mylist/base.html> -->
+
+{% block content %}
+  
+	<h1>Issues...</h1>
+	<li>after registration take user to subscribed list or welcome page</li>
+	<li>list_mkr should automatically become a subscriber... or could send to subscribe page</li>
+	<li>	** only display relevant links - depending if subscribed or not</li>
+	<li> selecting a list should display current items and form to add other items</li>
+	<li> list displaying items should have a button to select each item and then apply action down the bottom</li>
+	<li> remove cleared sublists or don't diplay them</li>
+	<li> only allow access to subscribed lists</li>
+	
+	<li>** add family grouping so can view lists crested by family - then user can subscribe</li> 
+	<li> search for lists and subscribe to list</li>
+	<li> make a page to show subscribers to each checklist</li>
+
+	<h1>possible formatting options</h1>
+	<li>http://www.w3schools.com/bootstrap/bootstrap_popover.asp<li>
+	<li>http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_navbar_fixed&stacked=h</li>
+	<li>http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_dropdown-menu&stacked=h</li>
+	<li>http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_alerts&stacked=h</li>
+	<li>http://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_glyphs&stacked=h</li>
+	<li>...</li>
+
+
+
+
+
+<div class="container">
+  <h2>Alerts</h2>
+  <p>The a element with class="close" and data-dismiss="alert" is used to close the alert box.</p>
+  <div class="alert alert-success">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> This alert box could indicate a successful or positive action.
+  </div>
+  <div class="alert alert-info">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Info!</strong> This alert box could indicate a neutral informative change or action.
+  </div>
+  <div class="alert alert-warning">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
+  </div>
+  <div class="alert alert-danger">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+  </div>
+</div>
+
+
+
+{% endblock %}

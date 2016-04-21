@@ -1,0 +1,44 @@
+{% extends "base.html"  %}
+<!-- original version had mylist/base.html> -->
+
+{% block content %}
+
+<div class="container">
+  <h3>Lists created by -  {{ request.user }}</h3>
+           
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>List name </th>
+        <th></th>
+      </tr>
+    </thead>
+	
+    <tbody>
+	{% for checklist in checklists %}
+      <tr>
+        <td><a href="{% url 'checklist_detail' pk=checklist.pk %}"><strong>{{ checklist.list_name }} </strong><span class="badge">{{ checklist.items.count }}</span></a> <h6> {{ checklist.list_code}}</h6></td>
+        
+		<td>
+			  <div class="dropdown">
+			    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-edit"></span> <span class="caret"></span></button>
+			    <ul class="dropdown-menu">
+			      <li><a href="{% url "list_new" %}">add new list</a></li>
+			      <li><a href="{% url 'checklist_remove' pk=checklist.pk %}">delete list</a></li>
+			      <li><a href="#">edit list</a></li>
+			      <li class="divider"></li>
+			      <li><a href="#">other</a></li>
+			    </ul>
+			  </div>
+			</div>
+		</td>
+			
+		<!-- OLD VERSION ... <td><a class="btn btn-default" href="{% url 'checklist_remove' pk=checklist.pk %}"><span class="glyphicon glyphicon-remove"></span></a></td> -->
+      </tr>
+	{% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<a href="{% url "list_new" %}">add new list</a>
+{% endblock content %}

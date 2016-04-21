@@ -1,0 +1,52 @@
+{% extends "base.html"  %}
+<!-- original version had mylist/base.html> -->
+
+
+{% block content %}
+	
+<div class="container">
+  <h3>View available lists</h3>
+           
+  <table class="table table-hover">
+    <thead>
+      <tr>
+		<th></th> 
+        <th></th>
+		<th></th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+	{% for lists in Checklist %}
+      <tr>
+		<td><a href="{% url 'checklist_detail' pk=lists.pk %}"><strong> {{ lists.list_name }} </strong><span class="badge">{{ lists.items.count }}</span></a></td>
+        
+        <td> <h6> (by {{lists.list_mkr}})</h6></td>
+		<!--<td><a href="{% url 'un_subscribe' pk=lists.pk  %}"> un_subscribe </a></td>-->
+<!--
+	><td><a href="{% url 'subscribe' pk=lists.pk  %}"><span class="glyphicon glyphicon-check"></span> subscribe</a></td>
+	<td><a href="{% url 'is_user_subscribed' pk=lists.pk  %}"> is_user_subscribed </a></td>
+-->
+		<td><a href="{% url 'confirm_list_code' pk=lists.pk  %}"><span class="glyphicon glyphicon-check"></span> subscribe</a></td>
+		
+      </tr>
+	{% endfor %}
+	
+    </tbody>
+	
+
+  </table>
+</div>
+
+	
+<h2><a href="{% url "list_new" %}">add new list</a></h2>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+  
+{% endblock %}

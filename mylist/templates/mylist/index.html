@@ -1,0 +1,48 @@
+
+<html>
+<head>
+	<!-- auto redirect below-->
+	<meta http-equiv="refresh" content="1; url={% url "checklist_subd"%}" />
+	
+	<!--styling for index.html logo below -->
+	
+	<style>
+      body a {
+		font-family: Helvetica,Arial,sans-serif; 
+		font-color: #99ff99; 
+		font-weight: bold;
+        font-size: 90px;
+		font-align: center;
+      }
+	  
+      h3 {
+		font-family: Helvetica,Arial,sans-serif; 
+		font-color: #ff99ff; 
+		font-weight: bold;
+        font-size: 20px;
+		font-align: center;
+      }
+	  
+	  
+    </style>
+			
+	<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>List Co</title>
+</head>
+
+
+	<br><br><br><br><br><br><br><br><br>
+	<center>
+		
+		{% load staticfiles %}
+		
+		<br>
+		<a href="{% url "checklist_subd"%}">List Co</a>
+		<div class="container">
+		  <h3>... share lists with anyone, anywhere, anytime ...</h3>
+		</div>
+	
+		
+	</center>
+</body>
+  
+</html>

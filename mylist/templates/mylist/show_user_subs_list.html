@@ -1,0 +1,50 @@
+{% extends "base.html"  %}
+<!-- original version had mylist/base.html> -->
+
+{% block content %}
+
+<h3>show_user_subs_list.html</h3>
+
+<br>
+
+<h2>{{request.user}}  - is subscribed to -</h2>
+
+{% for lists in Sublist %}
+<h3>Sublist.pk = {{lists.pk}}</h3>
+  <a href="{% url 'show_list_items' pk=lists.pk %}"> {{ lists.sub_list.all}}</a> <!-- lists.sub_list.all-->
+  <a href="{% url 'checklist_detail' pk=lists.pk %}"> checklist {{ lists.sub_list.all}}</a>
+	  <hr>
+	  
+{% endfor %}
+
+<h2>Add a new list...</h2>
+<h2><a href="{% url "list_new" %}">add new list</a></h2>
+
+{% endblock %}
+
+#u=User.objects.get(username='cdq') note - GET
+#u = cdq User
+#u.id = 3
+#a1 = Sublist(sub_user = u) ... save user part first
+#a1.save()
+#p1=Checklist.objects.get(list_name='daily)
+#p1.save() required
+#a1.sub_list.add(p1)
+#p2=Checklist.objects.get(list_name='weekly)
+#p2.save() REQUIRED
+#a1.sub_list.add(p2)
+#a1.sub_list.all() - gives checklists for sublist
+#p1.sublist_set.all() - gives sublist for checklist - nb- lower case s & no underscore
+# Checklist.objects.get(list_name='weekly').sublist_set.all() ... returns Sublists
+#Sublist.objects.filter(sub_list=cw) - returns <Sublist: mylist.Checklist.None ndg>, ...
+#a1.sub_user - returns <User:adq>
+#a1.sub_list.all() returns [] if empty - need to have .all() bc is a set
+#s1=Sublist.objects.get(sub_list=18) ... s1 = <Sublist:mylist.Checklist.None stupaggio>
+# clist=a1.sub_list.all()
+#clist ... returns a Checklist
+#cw=a1.sub_list.all()
+#cw returns ... [Checklist:monday monday stup]
+#cw[0] return Checklist: mond mond stup
+#cw[0].list_name returns monday
+
+

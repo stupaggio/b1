@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+  <h3>Subscribed lists -</h3>
+           
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+	
+    <tbody>
+		
+{% for checklist in checklists %}
+		<tr>	
+    		<td><h4><a href="{% url 'mylist.views.checklist_detail' pk=checklist.pk %}">{{ checklist.list_name }} </a><span class="badge">{{ checklist.items.count }} </span>  </h4>  <h6>by {{checklist.list_mkr}}</h6></td>
+    	
+			<td>
+				  <div class="dropdown">
+				    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-edit"></span> <span class="caret"></span></button>
+				    <ul class="dropdown-menu">
+					  <li><a href="{% url 'un_subscribe' pk=checklist.pk  %}">unsubscribe</a></li>
+				      <li><a href="{% url "list_new" %}">add new list</a></li>
+					  <li><a href="">other</a></li>
+				      <li><a href="#">edit list</a></li>
+					  <!--
+					  <li><a href="{% url 'checklist_remove' pk=checklist.pk %}">delete list</a></li>
+						  -->
+				      <li class="divider"></li>
+				      <li><a href="#">other</a></li>
+				    </ul>
+				  </div>
+				</div>
+			</td>
+			
+			<!--OLD VERSION...<td><h4><a class="btn btn-default" href="{% url 'un_subscribe' pk=checklist.pk  %}">un_subscribe <span class="glyphicon glyphicon-remove"></span></a></h4></td> -->
+			
+		<tr>
+	{% endfor %}
+    </tbody>
+  </table>
+</div>
+
+			
+	
+{% endblock content %}

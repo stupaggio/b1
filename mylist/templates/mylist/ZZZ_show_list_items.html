@@ -1,0 +1,30 @@
+{% extends "base.html"  %}
+<!-- original version had mylist/base.html> -->
+
+{% block content %}
+
+<p>show_list_items.html</p>
+
+{% for list_to_show in Checklist %}
+	<h2>{{list_to_show.list_name}} product's - </h2>
+{% endfor %}
+
+{% for list_items in Item %}
+	{% if list_items.action == "buy" %}
+		<li>{{list_items.action}} {{ list_items.qty}} x {{ list_items.item}} from {{list_items.shop}}</li>
+	{%else%}
+		<li>{{list_items.item}} {{list_items.action}}</li>
+	{%endif%}
+	
+	<h5><a href=".. url 'item_remove' pk=list_to_show.pk ..">purchased delete </a></h5>
+	
+	<br>
+	
+	
+{% endfor %}
+
+<h5><a href=".. url 'add_item_to_list' pk=list_to_show.pk .."> add item</a></h5>
+
+{% endblock %}
+
+ 

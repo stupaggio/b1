@@ -1,0 +1,95 @@
+{% load staticfiles %}
+
+<html>
+
+<head>
+    <title>List Co</title>
+	
+	<!-- Addred from w3school -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	
+	<!-- Addred from djangogirls -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href={% static "css/mylist.css" %}>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top"> 
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="{% url 'index' %}"> List Co </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{% url 'index' %}"> > </a></li>
+        <li class="dropdown">
+		  {% if user.is_authenticated %}
+           <li><a href="{% url "checklist_subd"%}"><span class="glyphicon glyphicon-list"></span> subscribed lists</a></li>
+           <li><a href="{% url "checklist_mkr"%}"><span class="glyphicon glyphicon-edit"></span> created lists</a></li>
+		   <li><a href="{% url "show_all_lists"%}"><span class="glyphicon glyphicon-search"></span> search lists</a></li>
+		  	{% if user.id = 1%}
+		  	  <li><a href="{% url 'start_page' %}"><span class="glyphicon glyphicon-cog"></span> settings</a></li>
+  		    {% else %}
+  		      <li><a href=""><span class="glyphicon glyphicon-lock"></span></li>
+  		    {% endif %}
+		  {% else %}
+		  {% endif %}
+		  
+          
+      </ul>
+  </li>
+      <ul class="nav navbar-nav navbar-right">
+		{% if user.is_authenticated %}
+		 <li><a href="{% url 'django.contrib.auth.views.logout' %}"><span class="glyphicon glyphicon-user"></span> Log out</a></li>
+		{% else %}
+         <li><a href="{% url ' register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+         <li><a href="{% url 'django.contrib.auth.views.login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+	    {% endif %}	
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<br>
+<br>
+<br>
+<h2>baseM</h2>
+
+
+<div class="container">
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse1">details</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse">
+        <div class="panel-body">user = {{request.user}} , id = {{request.user.id}} </div>
+        <div class="panel-footer">path = {{request.path}} </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block content %}
+{% endblock %}
+	  
+
+
+</body>
+</html>

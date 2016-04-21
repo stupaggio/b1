@@ -1,0 +1,25 @@
+{% extends "base.html"  %}
+<!-- original version had mylist/base.html> -->
+
+{% block content %}
+<h2>show_subscribers_for_all_lists.html</h2>
+<br>
+<h3>select .... to view - </h3>
+  {% for lists in Sublist %}
+    <h3><a href="{% url 'show_list_items' pk=lists.pk %}"> {{ lists.list_name }}</a></h3>
+	
+	<li>sub_list = {{lists.sub_list.all}} / sub_user = {{lists.sub_user}} / Sublist.pk,id = {{lists.id}}</li>
+	
+	
+	<hr>
+	
+  {% endfor %}
+
+
+<h2>Add a new list...</h2>
+<h2><a href="{% url "list_new" %}">add new list</a></h2>
+
+
+
+
+{% endblock %}

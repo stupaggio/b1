@@ -1,0 +1,71 @@
+{% extends "base.html"  %}
+<!-- original version had mylist/base.html> -->
+
+{% block content %}
+
+<div class="container">
+<h3> {{ checklist.list_mkr}}'s {{ checklist.list_name }} list</h3>
+           
+<table class="table table-hover">
+  <thead>
+   <tr>
+    <th>Items to buy</th>
+	<th>Action</th>
+   </tr>
+  </thead>
+
+<tbody>
+{% for item in checklist.items.all %}
+ <tr>	
+  {% if item.action == "buy" %}
+   <td><strong>{{item.qty}} x {{ item.item}} </strong><h6>{{ item.comment}} ({{ item.shop}})</h6></td>
+   <td><a class="btn btn-default" href="{% url 'item_purchased' pk=item.pk %}"><span class="glyphicon glyphicon-check"></span></a></td>
+  {%else%}
+	
+  {%endif%}
+ </tr>
+{% endfor %}
+<tr>
+	<td></td>
+	<td><a class="btn btn-default" href="{% url 'add_item_to_checklist' pk=checklist.pk %}"><span class="glyphicon glyphicon-plus"></span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="container">        
+<table class="table table-hover">
+  <thead>
+   <tr>
+    <th>Items purchased</th>
+	<th>Action</th>
+   </tr>
+  </thead>
+
+<tbody>
+{% for item in checklist.items.all %}
+ <tr>
+	
+ {% if item.action != "buy" %}
+  <td>{{item.qty}} x {{ item.item}}  - {{ item.comment}} ({{ item.shop}}) </td>
+  <td><a class="btn btn-default" href="{% url 'item_remove' pk=item.pk %}"><span class="glyphicon glyphicon-remove"></span></a></td>
+	
+ {%else%}
+	
+ {%endif%}
+ 	
+ </tr>
+	{% endfor %}
+	</tbody>
+   </table>
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+{% endblock %}

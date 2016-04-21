@@ -1,0 +1,34 @@
+{% extends "base.html"  %}
+<!-- original version had mylist/base.html> -->
+
+{% block content %}
+
+<h3>show_lists_user_is_mkr.html</h3>
+
+<br>
+
+<h2>{{request.user}} (user.id = {{request.user.id}} ) - is maker of -</h2>
+
+{% for lists in Checklist %}
+	
+  	<h3><a href="{% url 'show_list_items' pk=lists.pk %}"> {{ lists.list_name}} </a></h3>
+		
+	<h3><a href="{% url 'checklist_remove' pk=lists.pk %}"> remove list</a></h3>
+	<a class="btn btn-default" href="{% url 'checklist_remove' pk=lists.pk %}"><span class="glyphicon glyphicon-paperclip"></span>remove list</a>
+	
+	<hr>
+{% endfor %}
+
+<h3><a href="{% url "list_new" %}">add new list</a></h3>
+ 
+{% endblock %}
+
+views....
+def show_lists_user_is_mkr(request):
+     me = request.user
+     lists = Checklist.objects.filter(list_mkr=me)
+     return render(request, 'mylist/show_lists_user_is_mkr.html',{'Checklist':lists})   
+urls...
+ url(r'^show_lists_user_is_mkr/$', views.show_lists_user_is_mkr, name= 'show_lists_user_is_mkr'),
+
+

@@ -1,0 +1,27 @@
+{% extends "base.html"  %}
+<!-- original version had mylist/base.html> -->
+
+{% block content %}
+
+
+	<h2>functioning...</h2>
+	<h3><a href = "{% url "checklist_mkr"%}">checklist_mkr</a></h3>
+	<h3><a href = "{% url "checklist_subd"%}">checklist_subd</a></h3>
+	<h3><a href = "{% url "show_all_lists"%}">show_all_lists</a></h3>
+	<h3><a href = "{% url "show_user_subs_list"%}">show_list_user_subscribed_to</a></h3>
+	<h3><a href = "{% url "list_new" %}">add new list</a></h3>
+	<h3><a href = "{% url "issues_to_fix"%}">issues to fix</a></h3>
+	<h3><a href = "{% url "show_all_sublists"%}">show_all_sublists</a></h3>
+    <h3><a href = "{% url "show_subscribers_for_all_lists"%}">show_subscribers_for_all_lists</a><h3>
+	
+	
+	<hr>
+	<h2>not working correctly...</h2>
+    
+
+	
+	  
+
+
+
+{% endblock %}
