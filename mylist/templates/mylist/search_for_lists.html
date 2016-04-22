@@ -33,7 +33,7 @@
 		     <tbody>
 		 	{% for lists in Checklist %}
 		       <tr>
-		 		<td><a href="{% url 'checklist_detail' pk=lists.pk %}"><strong> {{ lists.list_name }} </strong><span class="badge">{{ lists.items.count }}</span></a></td>
+		 		<td><strong> {{ lists.list_name }} </strong><span class="badge">{{ lists.items.count }}</span></td>
         
 		         <td> <h6> (by {{lists.list_mkr}})</h6></td>
 		 		<!--<td><a href="{% url 'un_subscribe' pk=lists.pk  %}"> un_subscribe </a></td>-->
