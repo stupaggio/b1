@@ -20,9 +20,9 @@
     <tbody>
 	{% for lists in Checklist %}
       <tr>
-		<td><a href="{% url 'checklist_detail' pk=lists.pk %}"><strong> {{ lists.list_name }} </strong><span class="badge">{{ lists.items.count }}</span></a></td>
+		<td><strong><big><big>{{ lists.list_name }}  </strong></big></big><span class="badge"> {{ lists.items.count }}  </span></td>
         
-        <td> <h6> (by {{lists.list_mkr}})</h6></td>
+        <td> <h6> (by {{lists.list_mkr}}) </h6></td>
 		<!--<td><a href="{% url 'un_subscribe' pk=lists.pk  %}"> un_subscribe </a></td>-->
 <!--
 	><td><a href="{% url 'subscribe' pk=lists.pk  %}"><span class="glyphicon glyphicon-check"></span> subscribe</a></td>
